@@ -11,9 +11,16 @@
     margin-bottom: 2em;
     flex: 0 1 24%;
   } */
+
+  .saying {
+      margin-left: -32.5%;
+      margin-top: 3.2%;
+      padding: .3em;
+  }
+
   
   .card-content {
-    padding: .5em;
+    padding: 1em;
   }
   
   .card-content h3 {
@@ -23,14 +30,15 @@
     /* color: rgb(43, 112, 241); */
   }
   
-  /* .card-content p {
+  .card-content p {
     font-size: 80%;
     color: darkslategrey;
+    padding: .5em;
   }
   
   .content-petname {
     color: darkslategrey;
-  } */
+  } 
   
   .card button {
     background-color: cornflowerblue;
@@ -54,12 +62,12 @@
 .card {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   
   .card {
       flex-basis: 28%;
       margin: 1em;
-      padding: 1em;
+      padding: 1.5em;
       border: 1px solid goldenrod;
   }

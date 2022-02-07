@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 //import the components we will need
 import { LocationCard } from './LocationCard';
 import { getAllLocations, getLocationById } from '../../modules/LocationManager';
+import { deleteLocation } from '../../modules/LocationManager';
 
 export const LocationList = () => {
   // The initial state is an empty array
@@ -20,12 +21,19 @@ export const LocationList = () => {
     getLocations();
   }, []);
 
+  const handleDeleteLocation= id => {
+    deleteLocation(id)
+    .then(() => getAllLocations().then(setLocations));
+};
+
   // Finally we use .map() to "loop over" the animals array to show a list of animal cards
-    return(
-      <div className="container-cards">
-        {locations.map(location =>
-          <LocationCard key={location.id} location={location} />
-        )}
-      </div>
+  return (
+    <div className="container-cards">
+      {locations.map(location =>
+        <LocationCard
+          key={location.id}
+          location={location}
+          handleDeleteLocation={handleDeleteLocation} />)}
+    </div>
     );
   };

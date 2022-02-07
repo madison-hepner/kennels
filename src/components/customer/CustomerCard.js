@@ -1,9 +1,18 @@
 import React from "react"
 import "./Customer.css"
 
-export const CustomerCard = () => (
-    <section className="customer">
-        <h3 className="customer__name">Billy</h3>
-        <div className="customer__breed">hello</div>
-    </section>
-)
+export const CustomerCard = ({ customer }) => {
+    return (
+      <div className="card">
+        <div className="card-content">
+          {/* <picture>
+            {/* <img src={'/images/dog.svg'} alt="Dog Pic" /> */}
+          {/* </picture> */} 
+          <h3><span className="card-customername">
+            {customer.name}
+          </span></h3>
+          <p>{customer.breed}</p>
+        </div>
+      </div>
+    );
+  }
