@@ -3,10 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { AnimalCard } from './AnimalCard';
 import { getAllAnimals, getAnimalById } from '../../modules/AnimalManager';
 import { deleteAnimal } from '../../modules/AnimalManager';
+import { useNavigate} from "react-router-dom"
+import "./AnimalForm.css"
+
 
 export const AnimalList = () => {
   // The initial state is an empty array
   const [animals, setAnimals] = useState([]);
+  const navigate = useNavigate();
+
 
   const getAnimals = () => {
     // After the data comes back from the API, we
@@ -29,6 +34,17 @@ export const AnimalList = () => {
 
   // Finally we use .map() to "loop over" the animals array to show a list of animal cards
   return (
+
+    <>
+
+      <section className="section-content">
+        <button type="button"
+          className="btn"
+            onClick={() => {navigate("/animals/create")}}>
+            Admit Animal
+          </button>
+        </section>
+    
     <div className="container-cards">
       {animals.map(animal =>
         <AnimalCard
@@ -36,6 +52,8 @@ export const AnimalList = () => {
           animal={animal}
           handleDeleteAnimal={handleDeleteAnimal} />)}
     </div>
+
+    </>
 
   );
 
