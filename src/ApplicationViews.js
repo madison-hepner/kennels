@@ -5,6 +5,8 @@ import { AnimalList } from './components/animal/AnimalList.js'
 import { EmployeeList } from "./components/employee/EmployeeList.js"
 import { LocationList } from "./components/location/LocationList.js"
 import { CustomerList } from "./components/customer/CustomerList.js"
+import { AnimalDetail } from "./components/animal/AnimalDetail"
+import { LocationDetail } from "./components/location/LocationDetail"
 
 
 export const ApplicationViews = () => {
@@ -16,11 +18,26 @@ export const ApplicationViews = () => {
 
                 {/* Render the animal list when http://localhost:3000/animals */}
 
-                <Route path="/animals" element={<AnimalList />} />
+                {/* Make sure you add the `exact` attribute here */}
+                <Route exact path="/animals" element={<AnimalList />} />
+                
+                <Route path="/animals/:animalId" element={<AnimalDetail />} />
+
+
+                {/*
+                    This is a new route to handle a URL with the following pattern:
+                    http://localhost:3000/animals/1
+
+                    It will not handle the following URL because the `(\d+)`
+                    matches only numbers after the final slash in the URL
+                    http://localhost:3000/animals/jack
+                */}
+
 
                 <Route path="/employees" element={<EmployeeList />} />
 
                 <Route path="/locations" element={<LocationList />} />
+                <Route path="/locations/:locationId" element={<LocationDetail />} />
 
                 <Route path="/customers" element={<CustomerList />} />
             </Routes>
