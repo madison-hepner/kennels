@@ -8,6 +8,11 @@ import { CustomerList } from "./components/customer/CustomerList.js"
 import { AnimalDetail } from "./components/animal/AnimalDetail"
 import { LocationDetail } from "./components/location/LocationDetail"
 import { AnimalForm } from './components/animal/AnimalForm'
+import { EmployeeDetail } from "./components/employee/EmployeeDetail.js"
+import { EmployeeForm } from "./components/employee/EmployeeForm"
+import { CustomerDetail } from "./components/customer/CustomerDetail"
+import { CustomerForm } from "./components/customer/CustomerForm"
+
 
 
 export const ApplicationViews = () => {
@@ -35,14 +40,24 @@ export const ApplicationViews = () => {
                 */}
 
 
-                <Route path="/employees" element={<EmployeeList />} />
+                <Route exact path="/employees" element={<EmployeeList />} />
+                <Route path="/employees/:employeeId" element={<EmployeeDetail />} />
+
 
                 <Route path="/locations" element={<LocationList />} />
                 <Route path="/locations/:locationId" element={<LocationDetail />} />
 
-                <Route path="/customers" element={<CustomerList />} />
+
+                <Route exact path="/customers" element={<CustomerList />} />
+                <Route path="/customers/:customerId" element={<CustomerDetail />} />
+
 
                 <Route path="/animals/create" element={<AnimalForm />} />
+
+                <Route path="/employees/create" element={<EmployeeForm />} />
+                
+                <Route path="/customers/create" element={<CustomerForm />} />
+
             </Routes>
         </>
     )

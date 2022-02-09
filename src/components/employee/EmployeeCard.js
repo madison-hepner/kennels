@@ -1,5 +1,6 @@
 import React from "react"
 import "./Employee.css"
+import { Link } from "react-router-dom";
 
 export const EmployeeCard = ({ employee, handleDeleteEmployee }) => {
     return (
@@ -11,8 +12,11 @@ export const EmployeeCard = ({ employee, handleDeleteEmployee }) => {
           <h3><span className="card-employeename">
             {employee.name}
           </span></h3>
-          <p>Works at: {employee.workplace}</p>
+          <p>Works at: {employee.location?.name}</p>
           <button type="button" onClick={() => handleDeleteEmployee(employee.id)}>Remove Employee</button>
+          <Link to={`/employees/${employee.id}`}>
+            <button>Details</button>
+          </Link>
         </div>
       </div>
     );
