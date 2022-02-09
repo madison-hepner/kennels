@@ -1,6 +1,8 @@
 import React from "react"
 import { Route, Routes } from "react-router-dom"
 import { Home } from "./Home"
+import { Login } from "./components/auth/Login.js"
+import { Register } from "./components/auth/Register.js"
 import { AnimalList } from './components/animal/AnimalList.js'
 import { EmployeeList } from "./components/employee/EmployeeList.js"
 import { LocationList } from "./components/location/LocationList.js"
@@ -12,13 +14,32 @@ import { EmployeeDetail } from "./components/employee/EmployeeDetail.js"
 import { EmployeeForm } from "./components/employee/EmployeeForm"
 import { CustomerDetail } from "./components/customer/CustomerDetail"
 import { CustomerForm } from "./components/customer/CustomerForm"
+import { useNavigate } from "react-router-dom"
 
 
 
-export const ApplicationViews = () => {
+
+export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
+    
+    const Navigate = useNavigate();
+
+    const PrivateRoute = ({ children }) => {
+        return isAuthenticated ? children : <Navigate to="/login" />;
+    }
+  
+    const setAuthUser = (user) => {
+      sessionStorage.setItem("kennel_customer", JSON.stringify(user))
+      setIsAuthenticated(sessionStorage.getItem("kennel_customer") !== null)
+    }
     return (
         <>
             <Routes>
+            <Route exact path="/login" element={<Login setAuthUser={setAuthUser} />} />
+            <Route exact path="/register" element={<Register />} />
+
+
+
+            
                 {/* Render the location list when http://localhost:3000/ */}
                 <Route exact path="/" element={<Home />} />
 
