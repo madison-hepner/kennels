@@ -14,6 +14,7 @@ import { EmployeeDetail } from "./components/employee/EmployeeDetail.js"
 import { EmployeeForm } from "./components/employee/EmployeeForm"
 import { CustomerDetail } from "./components/customer/CustomerDetail"
 import { CustomerForm } from "./components/customer/CustomerForm"
+import { AnimalEditForm } from './components/animal/AnimalEditForm'
 
 
 
@@ -37,25 +38,31 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                 <Route exact path="/register" element={<Register />} />
 
 
-
-            
-                {/* Render the location list when http://localhost:3000/ */}
                 <Route exact path="/" element={
                     <PrivateRoute>
                         <Home />
                      </PrivateRoute>
-                    } />
+                } />
 
-                {/* Render the animal list when http://localhost:3000/animals */}
+                
 
-                {/* Make sure you add the `exact` attribute here */}
                 <Route excat path="/animals" element={
                     <PrivateRoute>
                         <AnimalList />
                     </PrivateRoute>
                 } />
                 
-                <Route path="/animals/:animalId" element={<AnimalDetail />} />
+                <Route exact path="/animals/:animalId" element={
+                    <PrivateRoute>
+                        <AnimalDetail />
+                    </PrivateRoute>
+                } />
+
+                <Route path="/animals/:animalId/edit" element={
+                    <PrivateRoute>
+                        <AnimalEditForm />
+                    </PrivateRoute>
+                } />
 
 
 
@@ -64,7 +71,11 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                         <EmployeeList />
                     </PrivateRoute>
                 } />
-                <Route path="/employees/:employeeId" element={<EmployeeDetail />} />
+                <Route path="/employees/:employeeId" element={
+                    <PrivateRoute>
+                        <EmployeeDetail />
+                    </PrivateRoute>
+                } />
 
 
                 <Route path="/locations" element={
@@ -72,7 +83,11 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                         <LocationList />
                     </PrivateRoute>
                 } />
-                <Route path="/locations/:locationId" element={<LocationDetail />} />
+                <Route path="/locations/:locationId" element={
+                    <PrivateRoute>
+                    <LocationDetail />
+                    </PrivateRoute>
+                } />
 
 
                 <Route exact path="/customers" element={
@@ -80,7 +95,11 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                         <CustomerList />
                     </PrivateRoute>
                 } />
-                <Route path="/customers/:customerId" element={<CustomerDetail />} />
+                <Route path="/customers/:customerId" element={
+                    <PrivateRoute>
+                    <CustomerDetail />
+                    </PrivateRoute>
+                } />
 
 
                 <Route path="/animals/create" element={<AnimalForm />} />
