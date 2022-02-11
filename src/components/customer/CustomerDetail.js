@@ -6,7 +6,7 @@ import "./Customer.css"
 import { deleteCustomer } from "../../modules/CustomerManager";
 
 export const CustomerDetail = () => {
-  const [customer, setCustomer] = useState({ name: "", address: "" });
+  const [customer, setCustomer] = useState({ name: "", address: "", email: "" });
   const [isLoading, setIsLoading] = useState(true);
 
   const {customerId} = useParams();
@@ -33,7 +33,8 @@ export const CustomerDetail = () => {
   return (
     <section className="card">
       <h3 className="customer__name">{customer.name}</h3>
-      <div className="customer__address">{customer.address}</div>
+      <div className="customer__address">address: {customer.address}</div>
+      <div className="customer__email">email: {customer.email}</div>
       {/* What's up with the question mark???? See below.*/}
       {/* <div className="customer__location">Customer Of: {customer.location?.name}</div> */}
       <button type="button" disabled={isLoading} onClick={handleDelete}>

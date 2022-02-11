@@ -17,6 +17,10 @@ export const EmployeeCard = ({ employee, handleDeleteEmployee }) => {
           <Link to={`/employees/${employee.id}`}>
             <button>Details</button>
           </Link>
+
+          <Link to={`/employees/${employee.id}/edit`}>
+            <button>Edit</button>
+          </Link>
         </div>
       </div>
     );

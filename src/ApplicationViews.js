@@ -15,6 +15,9 @@ import { EmployeeForm } from "./components/employee/EmployeeForm"
 import { CustomerDetail } from "./components/customer/CustomerDetail"
 import { CustomerForm } from "./components/customer/CustomerForm"
 import { AnimalEditForm } from './components/animal/AnimalEditForm'
+import { CustomerEditForm } from "./components/customer/CustomerEditForm"
+import { EmployeeEditForm } from "./components/employee/EmployeeEditForm"
+import { LocationEditForm } from "./components/location/LocationEditForm"
 
 
 
@@ -76,6 +79,11 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                         <EmployeeDetail />
                     </PrivateRoute>
                 } />
+                <Route path="/employees/:employeeId/edit" element={
+                    <PrivateRoute>
+                        <EmployeeEditForm />
+                    </PrivateRoute>
+                } />
 
 
                 <Route path="/locations" element={
@@ -88,6 +96,11 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                     <LocationDetail />
                     </PrivateRoute>
                 } />
+                <Route path="/locations/:locationId/edit" element={
+                    <PrivateRoute>
+                        <LocationEditForm />
+                    </PrivateRoute>
+                } />
 
 
                 <Route exact path="/customers" element={
@@ -98,6 +111,11 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                 <Route path="/customers/:customerId" element={
                     <PrivateRoute>
                     <CustomerDetail />
+                    </PrivateRoute>
+                } />
+                <Route path="/customers/:customerId/edit" element={
+                    <PrivateRoute>
+                        <CustomerEditForm />
                     </PrivateRoute>
                 } />
 

@@ -13,6 +13,7 @@ export const CustomerForm = () => {
 		id: "",
 		name: "",
 		address: "",
+        email: ""
 	});
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -96,6 +97,12 @@ export const CustomerForm = () => {
 				<div className="form-group">
 					<label htmlFor="address">Customer Address:</label>
 					<input type="text" id="address" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="customer address" value={customer.address} />
+				</div>
+			</fieldset>
+            <fieldset>
+				<div className="form-group">
+					<label htmlFor="email">Customer Email:</label>
+					<input type="text" id="email" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="customer email" value={customer.email} />
 				</div>
 			</fieldset>
 			<button className="btn btn-primary"
