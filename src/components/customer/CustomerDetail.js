@@ -38,7 +38,7 @@ export const CustomerDetail = () => {
       {/* What's up with the question mark???? See below.*/}
       {/* <div className="customer__location">Customer Of: {customer.location?.name}</div> */}
       <button type="button" disabled={isLoading} onClick={handleDelete}>
-          Discharge
+          Remove Customer
         </button>
     </section>
   );

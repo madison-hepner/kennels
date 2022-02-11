@@ -8,6 +8,7 @@ export const Register = ({setAuthUser}) => {
     const email = useRef()
     const conflictDialog = useRef()
     const navigate = useNavigate()
+    const address = useRef()
 
     const existingUserCheck = () => {
         return fetch(`http://localhost:8088/customers?email=${email.current.value}`)
@@ -29,7 +30,8 @@ export const Register = ({setAuthUser}) => {
                         },
                         body: JSON.stringify({
                             email: email.current.value,
-                            name: `${firstName.current.value} ${lastName.current.value}`
+                            name: `${firstName.current.value} ${lastName.current.value}`,
+                            address: address.current.value
                         })
                     })
                         .then(res => res.json())
@@ -68,6 +70,10 @@ export const Register = ({setAuthUser}) => {
                 <fieldset>
                     <label htmlFor="inputEmail"> Email address </label>
                     <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="address"> Address </label>
+                    <input ref={address} type="text" name="address" className="form-control" placeholder="Adress" required />
                 </fieldset>
                 <fieldset>
                     <button type="submit"> Sign in </button>
