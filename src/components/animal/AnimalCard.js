@@ -7,7 +7,7 @@ export const AnimalCard = ({ animal, handleDeleteAnimal }) => {
     <div className="card">
       <div className="card-content">
         <picture>
-          <img class="kennellogo" src={'https://image.freepik.com/free-vector/cute-corgi-puppy-cartoon-icon_42750-299.jpg?w=1060'} alt="My Dog" />
+          <img className="kennellogo" src={'https://image.freepik.com/free-vector/cute-corgi-puppy-cartoon-icon_42750-299.jpg?w=1060'} alt="My Dog" />
         </picture>
         <h3>Name: <span className="card-petname">
           {animal.name}

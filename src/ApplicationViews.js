@@ -20,10 +20,6 @@ import { EmployeeEditForm } from "./components/employee/EmployeeEditForm"
 import { LocationEditForm } from "./components/location/LocationEditForm"
 
 
-
-
-
-
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
     const PrivateRoute = ({ children }) => {
         return isAuthenticated ? children : <Navigate to="/login" />;
