@@ -2,29 +2,50 @@ import React, { useState, useEffect } from "react"
 import {useNavigate, useParams} from "react-router-dom";
 import {getAnimalById, updateAnimal} from "../../modules/AnimalManager"
 import "./AnimalForm.css"
+import { getAllCustomers } from "../../modules/CustomerManager";
+import { getCustomerById } from "../../modules/CustomerManager";
+import { LocationDetail } from "../location/LocationDetail";
 
 export const AnimalEditForm = () => {
-  const [animal, setAnimal] = useState({ name: "", breed: "" });
-  const [isLoading, setIsLoading] = useState(false);
 
-  const {animalId} = useParams();
-  const navigate = useNavigate();
+    const getCustomers = () => {
+        return getAllCustomers().then(customersFromAPI => {
+            setCustomers(customersFromAPI)
+        })
+    }
 
-  const handleFieldChange = evt => {
-    const stateToChange = { ...animal };
-    stateToChange[evt.target.id] = evt.target.value;
-    setAnimal(stateToChange);
-  };
+    // useEffect(() => {
+    //     getCustomers()
+	// 	//load customer data and setState
+	// }, []);
 
-  const updateExistingAnimal = evt => {
-    evt.preventDefault()
-    setIsLoading(true);
+	const [customers, setCustomers] = useState([]);
+    const [animal, setAnimal] = useState({ name: "", breed: "", customerId: "" });
+    const [isLoading, setIsLoading] = useState(false);
+
+    const {animalId} = useParams();
+    const navigate = useNavigate();
+    const customerId = animal.customerId
+    // const locationId = animal.locationId
+
+    const handleFieldChange = evt => {
+        const stateToChange = { ...animal };
+        stateToChange[evt.target.id] = evt.target.value;
+        setAnimal(stateToChange);
+
+    };
+
+    const updateExistingAnimal = evt => {
+        evt.preventDefault()
+        setIsLoading(true);
 
     // This is an edit, so we need the id
     const editedAnimal = {
       id: animalId,
       name: animal.name,
-      breed: animal.breed
+      breed: animal.breed,
+      locationId: parseInt(animal.locationId),
+      customerId: parseInt(animal.customerId)
     };
 
   updateAnimal(editedAnimal)
@@ -39,6 +60,15 @@ export const AnimalEditForm = () => {
         setIsLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    getCustomerById(customerId)
+      .then(customer => {
+        setCustomers(customer);
+        setIsLoading(false);
+      });
+  }, []);
+
 
   return (
     <>
@@ -65,12 +95,26 @@ export const AnimalEditForm = () => {
             />
             <label htmlFor="breed">Breed</label>
           </div>
+
+          <div className="formgrid">
+					<label htmlFor="customerId">Customer: </label>
+					<select value={animal.customerId} name="customer" id="customerId" onChange={handleFieldChange} className="form-control" >
+						<option value="0">Select a customer</option>
+						{customers.map(customer => (
+							<option key={customer.id} value={customer.id}>
+								{customer.name}
+							</option>
+						))}
+					</select>
+			</div>
+
           <div className="alignRight">
             <button
               type="button" disabled={isLoading}
               onClick={updateExistingAnimal}
               className="btn btn-primary"
             >Submit</button>
+
           </div>
         </fieldset>
       </form>

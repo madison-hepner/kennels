@@ -69,29 +69,21 @@ export const EmployeeEditForm = () => {
               id="name"
               value={employee.name}
             />
-            <label htmlFor="name">employee name</label>
+            <label htmlFor="name">Employee Name:</label>
+            </div>
 
-            <input
-            
-              type="option"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="location"
-              value={employee.locationId}
-            />
-			<label htmlFor="location">Change Employee Location: </label>
+
+			<div className="formgrid">
+				<label htmlFor="location">Change Employee Location: </label>
 				<select value={employee.locationId} name="locationId" id="locationId" onChange={handleFieldChange} className="form-control" >
-					<option value="0" className="form-conrol">Select a location</option>
-						{locations.map(location => (
-							<option key={location.id} value={location.id}>
-								{location.name}
-							</option>
-						))}
+					<option value="0">Select a location</option>
+					    {locations.map(location => (
+						<option key={location.id} value={location.id}>
+							{location.name}
+					</option>
+					))}
 					</select>
-                </div>
-
-
+				</div>
           <div className="alignRight">
             <button
               type="button" disabled={isLoading}

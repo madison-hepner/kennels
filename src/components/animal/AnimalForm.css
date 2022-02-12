@@ -4,7 +4,7 @@
     align-content: center;
     border: none;
     color: cornsilk;
-    /* text-align: center; */
+    text-align: center; 
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
@@ -73,6 +73,6 @@ fieldset input, fieldset button, fieldset select {
     margin: 0
 }
 
-/* fieldset .alignRight {
+fieldset .alignRight {
     text-align: right;
-} */
+} 

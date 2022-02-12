@@ -33,7 +33,8 @@ export const EmployeeDetail = () => {
   return (
     <section className="card">
       <h3 className="employee__name">{employee.name}</h3>
-      <div className="employee__location">{employee.location?.address}</div>
+      <div className="employee__location">Address: {employee.location?.address}</div>
+      <div className="employee__workplace">Works at: {employee.location?.name}</div>
       {/* What's up with the question mark???? See below.*/}
       <button type="button" disabled={isLoading} onClick={handleDelete}>
           Add Employee
