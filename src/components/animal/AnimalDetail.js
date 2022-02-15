@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {useParams, useNavigate} from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { getAnimalById } from "../../modules/AnimalManager";
 import "./AnimalDetail.css";
 import "./Animal.css"
@@ -9,7 +9,7 @@ export const AnimalDetail = () => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
   const [isLoading, setIsLoading] = useState(true);
 
-  const {animalId} = useParams();
+  const { animalId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,8 +38,8 @@ export const AnimalDetail = () => {
       <div className="animal__location">Location: {animal.location?.name}</div>
       <div className="animal__owner">Customer: {animal.customer?.name}</div>
       <button type="button" disabled={isLoading} onClick={handleDelete}>
-          Discharge
-        </button>
+        Discharge
+      </button>
     </section>
   );
 };

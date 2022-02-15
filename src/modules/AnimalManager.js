@@ -29,7 +29,7 @@ export const deleteAnimal = (id) => {
 
 export const updateAnimal = (editedAnimal) => {
   return fetch(`${remoteURL}/animals/${editedAnimal.id}`, {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json"
     },

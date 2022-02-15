@@ -6,6 +6,7 @@ import { getAllCustomers } from "../../modules/CustomerManager";
 import { getCustomerById } from "../../modules/CustomerManager";
 import { LocationDetail } from "../location/LocationDetail";
 
+
 export const AnimalEditForm = () => {
 
     const getCustomers = () => {

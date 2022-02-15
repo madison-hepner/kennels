@@ -1,8 +1,6 @@
 import React, {useState} from "react"
 import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css"
-// import { withRouter } from 'react-router-dom'
-
 
 
 export const NavBar = ({ clearUser, isAuthenticated }) => {
@@ -10,7 +8,7 @@ export const NavBar = ({ clearUser, isAuthenticated }) => {
 
     const handleLogout = () => {
         clearUser();
-        history.push('/');
+        history('/');
     }
 
     return (
