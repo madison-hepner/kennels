@@ -18,7 +18,7 @@ export const Home = () => {
     <>
         <div className="card">
         <h2>Nashville Kennels</h2>
-        <small class="saying">Loving care when you're not there.</small>
+        <small className="saying">Loving care when you're not there.</small>
 
         <address>
             <div>Visit Us at the Nashville North Location</div>

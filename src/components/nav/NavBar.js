@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useState} from "react"
 import { Link, useNavigate } from "react-router-dom";
-import "./NavBar.css";
+import "./NavBar.css"
+// import { withRouter } from 'react-router-dom'
+
+
 
 export const NavBar = ({ clearUser, isAuthenticated }) => {
-    let history = useHistory()
+    const history = useNavigate()
 
     const handleLogout = () => {
         clearUser();
@@ -11,7 +14,6 @@ export const NavBar = ({ clearUser, isAuthenticated }) => {
     }
 
     return (
-        <Route>
         <ul className="navbar">
             <li className="navbar__item">
                 <Link className="navbar__link" to="/"> Home </Link>
@@ -42,6 +44,8 @@ export const NavBar = ({ clearUser, isAuthenticated }) => {
                     <Link className="navbar__link" to="/login">Login</Link>
                 </li>}
         </ul>
-        </Route>
     );
 };
+
+
+// export default withRouter(NavBar);

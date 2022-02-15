@@ -4,6 +4,10 @@ import { addAnimal } from '../../modules/AnimalManager';
 import './AnimalForm.css'
 import { getAllLocations } from '../../modules/LocationManager';
 import { getAllCustomers } from '../../modules/CustomerManager';
+import Calendar from "react-select-date";
+
+
+
 
 export const AnimalForm = () => {
 	// State will contain both animal data as well as an isLoading flag.
@@ -13,7 +17,8 @@ export const AnimalForm = () => {
 		name: "",
 		breed: "",
 		locationId: 0,
-		customerId: 0
+		customerId: 0,
+		dateAdmitted: 0
 	});
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -21,6 +26,7 @@ export const AnimalForm = () => {
 	// you will need the the `getAll` in the LocationsManager and CustomersManager to complete this section
 	const [locations, setLocations] = useState([]);
 	const [customers, setCustomers] = useState([]);
+	const [value, onChange] = useState(new Date());
 
 	const navigate = useNavigate();
 
@@ -73,8 +79,9 @@ export const AnimalForm = () => {
 
 		const locationId = animal.locationId
 		const customerId = animal.customerId
+		const dateAdmitted= animal.dateAdmitted
 
-		if (locationId === 0 || customerId === 0) {
+		if (locationId === 0 || customerId === 0 || dateAdmitted === 0) {
 			window.alert("Please select a location and a customer")
 		} else {
 			//invoke addAnimal passing animal as an argument.
@@ -83,6 +90,7 @@ export const AnimalForm = () => {
 				.then(() => navigate("/animals"))
 		}
 	}
+
 
 	return (
 		<form className="animalForm">
@@ -123,7 +131,13 @@ export const AnimalForm = () => {
 							</option>
 						))}
 					</select>
+
 				</div>
+			</fieldset>
+			<fieldset>
+			<div>
+			<Calendar onSelect={(date) => console.log(date)}/>
+    		</div>
 			</fieldset>
 			<button className="btn btn-primary"
 				onClick={handleClickSaveAnimal}>
@@ -132,3 +146,5 @@ export const AnimalForm = () => {
 		</form>
 	)
 };
+
+
