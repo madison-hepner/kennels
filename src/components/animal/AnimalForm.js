@@ -18,7 +18,7 @@ export const AnimalForm = () => {
 		breed: "",
 		locationId: 0,
 		customerId: 0,
-		dateAdmitted: 0
+		dateAdmitted: ""
 	});
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -51,6 +51,8 @@ export const AnimalForm = () => {
 		setAnimal(newAnimal)
 	}
 
+
+
         const getLocations = () => {
             return getAllLocations().then(locationsFromAPI => {
                 setLocations(locationsFromAPI)
@@ -63,6 +65,9 @@ export const AnimalForm = () => {
             })
         }
 
+		const current = new Date();
+		const dateAdmitted = `${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`
+
     useEffect(() => {
         getLocations()
 		//load location data and setState
@@ -73,15 +78,19 @@ export const AnimalForm = () => {
 		//load customer data and setState
 	}, []);
 
+	useEffect(() => {
+		const copy = {...animal}
+		copy.dateAdmitted = dateAdmitted
+		setAnimal(copy)
+	},[])
 
 	const handleClickSaveAnimal = (event) => {
 		event.preventDefault() //Prevents the browser from submitting the form
 
 		const locationId = animal.locationId
 		const customerId = animal.customerId
-		const dateAdmitted= animal.dateAdmitted
 
-		if (locationId === 0 || customerId === 0 || dateAdmitted === 0) {
+		if (locationId === 0 || customerId === 0) {
 			window.alert("Please select a location and a customer")
 		} else {
 			//invoke addAnimal passing animal as an argument.
@@ -91,12 +100,6 @@ export const AnimalForm = () => {
 		}
 	}
 
-	// const
-	// 	var today = new Date();
-	// 	var dd = String(today.getDate()).padStart(2, '0');
-	// 	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-	// 	var yyyy = today.getFullYear();
-	// 	today = mm + '/' + dd + '/' + yyyy;}
 
 	return (
 		<form className="animalForm">
@@ -142,7 +145,7 @@ export const AnimalForm = () => {
 			</fieldset>
 			<fieldset>
 			<div>
-			<Calendar value={animal.dateAdmitted} onSelect={(date) => console.log(date)}/>
+				<h4 className="dateAdmitted">Date to be Admitted: {dateAdmitted}</h4>
     		</div>
 			</fieldset>
 			<button className="btn btn-primary"
