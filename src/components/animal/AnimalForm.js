@@ -145,7 +145,7 @@ export const AnimalForm = () => {
 			</fieldset>
 			<fieldset>
 			<div>
-				<h4 className="dateAdmitted">Date to be Admitted: {dateAdmitted}</h4>
+				<div className="dateAdmitted">Date to be Admitted: {dateAdmitted} (today's date)</div>
     		</div>
 			</fieldset>
 			<button className="btn btn-primary"

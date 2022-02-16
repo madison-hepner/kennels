@@ -108,6 +108,12 @@ export const AnimalEditForm = () => {
 						))}
 					</select>
 			</div>
+          <div className="formgrid">
+            <div className="date">
+                  <label htmlFor="dateAdmitted">Date Admitted:</label>
+                  <div className="dateAdmitted">{animal.name} was addmited on {animal.dateAdmitted}</div>
+              </div>
+              </div>
 
           <div className="alignRight">
             <button

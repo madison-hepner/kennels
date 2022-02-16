@@ -76,3 +76,7 @@ fieldset input, fieldset button, fieldset select {
 fieldset .alignRight {
     text-align: right;
 } 
+
+.date {
+    padding: 1em;
+}
